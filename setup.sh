@@ -21,7 +21,8 @@ echo 'Packaging and uploading lambda code to S3'
 cd..
 mkdir app && cd app
 wget https://raw.githubusercontent.com/aws-samples/amazon-documentdb-samples/master/samples/change-streams/app/lambda_function.py
-wget https://raw.githubusercontent.com/aws-samples/amazon-documentdb-samples/master/samples/change-streams/app/requirements.txt
+touch requirements.txt
+echo 'boto3==1.16.55' > requirements.txt
 python -m venv elasticacheLambda
 source elasticacheLambda/bin/activate
 mv lambda_function.py elasticacheLambda/lib/python*/site-packages/
