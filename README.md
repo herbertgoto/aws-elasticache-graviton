@@ -21,7 +21,10 @@ This solution is composed of:
 3. Execute `chmod 700 aws-elasticache-graviton/setup.sh` and execute `aws-elasticache-graviton/setup.sh`. This setup bash will:
     1. Create and publish a Lambda layer for Pandas
     2. Package and upload Lambda code to S3
-4. Deploy the CloudFormation Stack by running ``.  
+4. Deploy the CloudFormation Stack by running the following command (it is set to be run every 8 days, you can change it):
+```
+aws cloudformation deploy --stack-name elasticsearch-graviton --template-file aws-elasticache-graviton/elasticache-graviton-finder.yml --parameter-overrides ParamS3Bucket=$BUCKET_NAME LambdaLayerArn=$(jq -r .'LayerVersionArn' folder/lambdaLayer-output.json) Frequency='rate(8 days)' --capabilities CAPABILITY_NAMED_IAM
+```  
 
 ## Environment variables
 
