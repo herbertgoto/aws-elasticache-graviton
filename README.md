@@ -16,7 +16,7 @@ This solution is composed of:
 # How to install
 
 1. Deploy a Cloud9 environment and clone this repo `git clone https://github.com/herbertgoto/aws-elasticache-graviton.git`
-2. Execute `export S3_BUCKET=[Bucket Name]` where [Bucket Name] is the bucket that will host the lambda code. 
+2. Execute `export BUCKET_NAME=[Bucket Name]` where [Bucket Name] is the bucket that will host the lambda code. 
 3. Execute `chmod 700 aws-elasticache-graviton/setup.sh` and execute `aws-elasticache-graviton/setup.sh`. This setup bash will:
     1. Create and publish a Lambda layer for Pandas
     2. Package and upload Lambda code to S3
