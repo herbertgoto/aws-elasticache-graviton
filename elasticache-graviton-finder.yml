@@ -2,10 +2,7 @@ AWSTemplateFormatVersion: "2010-09-09"
 Description: Deploy a solution to frequently evaluate ElastiCache nodes to find Graviton and reservation candidates
 Parameters:
   ParamS3Bucket:
-    Description: The S3 Bucket that holds the lambdas
-    Type: String
-  ParamS3KeyLambda:
-    Description: The S3 key for the lambda code zip file
+    Description: The S3 Bucket that holds the lambda code
     Type: String
 
 Resources:
@@ -97,7 +94,7 @@ Resources:
     Properties:
       Code:
         S3Bucket: !Ref ParamS3Bucket
-        S3Key: !Ref ParamS3KeyLambda
+        S3Key: 'elasticacheLambda.zip'
       Description: 'Lambda to evaluate ElastiCache nodes for Graviton and reservation candidates'
       Environment:
         Variables:
