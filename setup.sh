@@ -11,7 +11,7 @@ deactivate
 
 mkdir python
 cd python
-cp -r ../v-env/lib64/python*/dist-packages/* .
+cp -r ../v-env/lib64/python*/site-packages/* .
 cd ..
 zip -r panda_layer.zip python
 aws lambda publish-layer-version --layer-name pandas --zip-file fileb://panda_layer.zip --compatible-runtimes python3.7 python3.8
