@@ -136,5 +136,7 @@ Outputs:
     Value: !Ref SNSTopicAlert
   S3BucketReports:
     Value: !Ref S3BucketReports
-   EventBridgeRule:
+  EventBridgeRule:
     Value: !Ref Scheduler
+  LambdaFunction: 
+    Value: !GetAtt LambdaFunction.Arn
