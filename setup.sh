@@ -19,8 +19,7 @@ cd python
 cp -r ../v-env/lib64/python*/site-packages/* .
 cd ..
 zip -r panda_layer.zip python
-aws lambda publish-layer-version --layer-name pandas --zip-file fileb://panda_layer.zip \ 
-    --compatible-runtimes python3.7 > lambdaLayer-output.json
+aws lambda publish-layer-version --layer-name pandas --zip-file fileb://panda_layer.zip --compatible-runtimes python3.7 > lambdaLayer-output.json
 
 echo 'Packaging and uploading lambda code to S3'
 # Upload Lambda Code
