@@ -7,6 +7,10 @@ Parameters:
   LambdaLayerArn:
     Description: The ARN for the Pandas Lambda Layer
     Type: String
+  Frequency:
+    Description: Frequency in days to execute the analysis
+    Type: String
+    Default: rate(8 days)
 
 Resources:
   
@@ -122,7 +126,7 @@ Resources:
     Properties: 
       Description: 'Rule that triggers the Lambda function'
       Name: !Sub "aws-rule-${AWS::StackName}"
-      ScheduleExpression: "rate(1 hour)"
+      ScheduleExpression: !Ref Frequency
       State: ENABLED
       Targets: 
         - Arn: !GetAtt LambdaFunction.Arn
