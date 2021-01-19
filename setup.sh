@@ -18,7 +18,7 @@ aws lambda publish-layer-version --layer-name pandas --zip-file fileb://panda_la
 
 echo 'Packaging and uploading lambda code to S3'
 # Upload Lambda Code
-cd..
+cd ..
 mkdir app && cd app
 wget https://raw.githubusercontent.com/aws-samples/amazon-documentdb-samples/master/samples/change-streams/app/lambda_function.py
 touch requirements.txt
