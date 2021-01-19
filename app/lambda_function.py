@@ -132,8 +132,8 @@ def getClusterCandidates():
                                 os.environ['SNS_TOPIC']
                             )
                             noficationFlag = 1
-                else: 
-                    candidate.append('no')
+                    else: 
+                        candidate.append('no')
 
             if "Marker" in response:
                 response = elasticache_client.describe_cache_clusters(Marker=response['Marker']) 
