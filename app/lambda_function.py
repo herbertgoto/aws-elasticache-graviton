@@ -13,7 +13,6 @@ Identifies ElastiCache clusters that can be easily migrated to Graviton.
 Required environment variables:
 GRAVITON_REDIS_SUPPORTED_VERSION: The minimal Redis version that is supported with Graviton
 GRAVITON_MEMCACHED_SUPPORTED_VERSION: The minimal Memcached version that is supported with Graviton
-REGION: the region to be analized.
 BUCKET_NAME: The name of the bucket that will be used to stored the report. 
 BUCKET_PATH: The path of the bucket that will be used to stored the report. 
 SNS_TOPIC_ARN_ALERT: The topic to send exceptions.   
@@ -103,7 +102,7 @@ def getClusterCandidates():
 
     if elasticache_client is None:
         logger.debug('Creating new ElastiCache client.')
-        elasticache_client = boto3.client('elasticache', region_name=os.environ['REGION'])
+        elasticache_client = boto3.client('elasticache')
     
     try:
         response = elasticache_client.describe_cache_clusters()
