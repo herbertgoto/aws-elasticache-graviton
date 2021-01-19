@@ -12,6 +12,7 @@ This solution is composed of:
 - One SNS topic used to publish exceptions when running the Lambda. 
 - One SNS topic used to publish events when potential Graviton or reservation candidates are found. 
 - One Lambda function which reviews AWS ElastiCache deployments. 
+- One IAM role used by Lambda to invoke SNS, S3, and ElastiCache.
 
 # How to install
 
@@ -20,11 +21,11 @@ This solution is composed of:
 3. Execute `chmod 700 aws-elasticache-graviton/setup.sh` and execute `aws-elasticache-graviton/setup.sh`. This setup bash will:
     1. Create and publish a Lambda layer for Pandas
     2. Package and upload Lambda code to S3
+4. Deploy the CloudFormation Stack by running ``.  
 
 ## Environment variables
 
 - GRAVITON_REDIS_SUPPORTED_VERSION: The minimal Redis version that is supported with Graviton. It is set by default to 5.0.6
 - GRAVITON_MEMCACHED_SUPPORTED_VERSION: The minimal Memcached version that is supported with Graviton. It is set by default to 1.5.16
-- REGION: the region to be analized.
 - BUCKET_NAME: The name of the bucket that will be used to stored the report. 
 - BUCKET_PATH: The path of the bucket that will be used to stored the report. 
