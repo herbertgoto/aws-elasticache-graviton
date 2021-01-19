@@ -4,6 +4,9 @@ Parameters:
   ParamS3Bucket:
     Description: The S3 Bucket that holds the lambda code
     Type: String
+  LambdaLayerArn:
+    Description: The ARN for the Pandas Lambda Layer
+    Type: String
 
 Resources:
   
@@ -112,7 +115,7 @@ Resources:
       Runtime: python3.7
       Timeout: 120
       Layers: 
-        - arn:aws:lambda:us-west-2:826604414441:layer:pandas:1	
+        - !Ref LambdaLayerArn
 
   Scheduler:
     Type: AWS::Events::Rule
