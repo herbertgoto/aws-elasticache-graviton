@@ -16,6 +16,8 @@ This solution is composed of:
 - One Lambda function which reviews AWS ElastiCache workloads. 
 - One IAM role used by Lambda to invoke SNS, S3, and ElastiCache.
 
+This solution currently only evaluates large instance types which for now are the only ones that can be match to Graviton types offering. 
+
 # How to install
 
 1. Deploy a AWS Cloud9 environment and clone this repo `git clone https://github.com/herbertgoto/aws-elasticache-graviton.git`
