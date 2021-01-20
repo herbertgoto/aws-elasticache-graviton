@@ -1,17 +1,19 @@
 # A solution to discover AWS ElastiCache nodes candidates for Graviton and potential reserve nodes
 
-This solution frequently review AWS ElastiCache deployments in a region to identify potential Graviton candidate and reservations. When the solution is executed, it generates 2 csv reports in S3:
+This solution frequently review AWS ElastiCache deployments in a region to identify potential Graviton candidate and reservations. This can be used to reduce costs and improve performance on ElastiCache workloads.  
 
-- elasticache-graviton: inventory of ElastiCache nodes and whether it is a candidate for Graviton or not. 
+When the solution is executed, it generates 2 csv reports in S3:
+
+- elasticache-graviton: inventory of ElastiCache nodes and whether it is a candidate for Graviton or not (based on node type and redis/memcached version). 
 - elasticache-ri-summary: inventory of ElastiCache active reservations and usage. 
 
 If potential Graviton or reservations are found, an event is sent to an SNS topic which the user can subscribe to.
 
 This solution is composed of:
-- One Amazon EventBridge rule in charge of triggering a Lambda on a scheduled basis.
+- One Amazon EventBridge rule in charge of triggering a Lambda on a scheduled basis. By default, it is set to 8 days. 
 - One SNS topic used to publish exceptions when running the Lambda. 
 - One SNS topic used to publish events when potential Graviton or reservation candidates are found. 
-- One Lambda function which reviews AWS ElastiCache deployments. 
+- One Lambda function which reviews AWS ElastiCache workloads. 
 - One IAM role used by Lambda to invoke SNS, S3, and ElastiCache.
 
 # How to install
